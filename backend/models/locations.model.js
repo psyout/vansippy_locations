@@ -25,13 +25,13 @@ const locationSchema = new mongoose.Schema(
 		},
 		images: String,
 		hours: {
-			type: Object, // ← change from Map to Object
+			type: Object,
 		},
 		drinks: {
-			type: Object, // ← change from Map to Object
+			type: Object,
 		},
 		food: {
-			type: Object, // ← change from Map to Object
+			type: Object,
 		},
 	},
 
