@@ -14,11 +14,6 @@ export const getLocations = async (req, res) => {
 export const addLocation = async (req, res) => {
 	const location = req.body;
 
-	// Validate required fields
-	if (!location.name || !location.address || !location.category?.title) {
-		return res.status(400).json({ success: false, message: 'Missing required fields' });
-	}
-
 	const newLocation = new Location(location);
 	try {
 		await newLocation.save();
