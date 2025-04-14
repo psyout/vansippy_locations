@@ -13,7 +13,10 @@ const PORT = process.env.PORT || 8080;
 // Allow CORS for the Render URL
 app.use(
 	cors({
-		origin: '*', // Allow all origins (use only for development)
+		origin: [
+			'http://localhost:3001', // Local development frontend
+			'https://vansippy-locations.onrender.com', // Deployed frontend
+		],
 	})
 );
 
