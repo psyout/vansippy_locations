@@ -8,17 +8,10 @@ dotenv.config();
 
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+// Define the port using an environment variable or default to 5000
+const PORT = process.env.PORT || 'https://vansippy-locations.onrender.com';
 
-// Allow CORS for the Render URL
-app.use(
-	cors({
-		origin: [
-			'http://localhost:3001', // Local development frontend
-			'https://vansippy-locations.onrender.com', // Deployed frontend
-		],
-	})
-);
+app.use(cors());
 
 // Middleware to parse JSON bodies
 app.use(express.json());
