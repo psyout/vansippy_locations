@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 // Define the port using an environment variable or default to 5000
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 'https://vansippy-locations.onrender.com';
 
 app.use(cors());
 
@@ -22,5 +22,5 @@ app.use('/api/locations', locationRoutes);
 // Middleware to Connect to MongoDB
 app.listen(PORT, () => {
 	connectDB();
-	console.log(`Server started at http://localhost:${PORT}`);
+	console.log(`Server started at ${PORT}`);
 });
