@@ -8,8 +8,8 @@ dotenv.config();
 
 const app = express();
 
-// Define the port using an environment variable or default to 5000
-const PORT = process.env.PORT || 'https://vansippy-locations.onrender.com';
+// Define the port using an environment variable or default to 8080
+const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 
