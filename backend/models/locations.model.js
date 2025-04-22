@@ -8,9 +8,7 @@ const locationSchema = new mongoose.Schema(
 			type: [Number],
 			required: true,
 			validate: {
-				validator: function (arr) {
-					return arr.length === 2;
-				},
+				validator: (arr) => arr.length === 2,
 				message: 'Coordinates must be [longitude, latitude]',
 			},
 		},
@@ -21,24 +19,29 @@ const locationSchema = new mongoose.Schema(
 		website: String,
 		full_address: String,
 		neighbourhoods: String,
-		category: {
-			title: String,
-		},
+
+		// Now a simple String
+		category: String,
+
 		hours: {
-			type: Object,
+			type: Map,
+			of: String,
+			default: {},
 		},
 		drinks: {
-			type: Object,
+			type: Map,
+			of: String,
+			default: {},
 		},
 		food: {
-			type: Object,
+			type: Map,
+			of: String,
+			default: {},
 		},
 	},
-
 	{
 		timestamps: true,
 	}
 );
 
-const Location = mongoose.model('Location', locationSchema);
-export default Location;
+export default mongoose.model('Location', locationSchema);

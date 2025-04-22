@@ -14,7 +14,29 @@ export const getLocations = async (req, res) => {
 export const addLocation = async (req, res) => {
 	const location = req.body;
 
-	const newLocation = new Location(location);
+	// Transform hours, drinks, and food into Maps
+	const hoursMap = new Map();
+	location.hours.forEach((hour) => {
+		hoursMap.set(hour.days, `${hour.from} - ${hour.to}`);
+	});
+
+	const drinksMap = new Map();
+	location.drinks.forEach((drink) => {
+		drinksMap.set(drink.name, drink.price);
+	});
+
+	const foodMap = new Map();
+	location.food.forEach((item) => {
+		foodMap.set(item.name, item.price);
+	});
+
+	const newLocation = new Location({
+		...location,
+		hours: hoursMap,
+		drinks: drinksMap,
+		food: foodMap,
+	});
+
 	try {
 		await newLocation.save();
 		res.status(201).json({ success: true, data: newLocation });
