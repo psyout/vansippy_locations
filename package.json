@@ -3,13 +3,14 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon backend/server.js"
+		"dev": "nodemon backend/server.js",
+		"start": "node backend/server.js"
 	},
 	"type": "module",
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"description": "",
+	"description": "Backend server for Vansippy application",
 	"dependencies": {
 		"cors": "^2.8.5",
 		"dotenv": "^16.4.7",
