@@ -19,6 +19,7 @@ const locationSchema = new mongoose.Schema(
 		website: String,
 		full_address: String,
 		neighbourhoods: String,
+		image: String,
 
 		category: String,
 
