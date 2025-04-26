@@ -1,11 +1,6 @@
 import express from 'express';
 
-import {
-	addLocation,
-	deleteLocation,
-	getLocations,
-	updateLocation,
-} from '../controllers/location.controller.js';
+import { addLocation, deleteLocation, getLocations, updateLocation } from '../controllers/location.controller.js';
 
 const router = express.Router();
 
