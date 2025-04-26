@@ -3,20 +3,11 @@ import Location from '../models/locations.model.js';
 
 export const getLocations = async (req, res) => {
 	try {
-		// Fetch all locations from the database
-		const locations = await Location.find();
-
-		// Add relative image URLs to each location
-		const locationsWithImages = locations.map((location) => ({
-			...location.toObject(), // Convert Mongoose document to plain object
-			image: `public/images/${location.name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}.jpg`, // Generate relative URL
-		}));
-
-		// Send the updated locations to the client
-		res.status(200).json({ data: locationsWithImages });
+		const locations = await Location.find({});
+		res.status(200).json({ success: true, data: locations });
 	} catch (error) {
-		console.error('Error fetching locations:', error);
-		res.status(500).json({ error: 'Failed to fetch locations' });
+		console.error('Error fetching locations:', error.message);
+		res.status(500).json({ success: false, message: 'Server error' });
 	}
 };
 
