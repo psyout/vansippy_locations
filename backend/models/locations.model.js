@@ -20,7 +20,6 @@ const locationSchema = new mongoose.Schema(
 		full_address: String,
 		neighbourhoods: String,
 
-		// Now a simple String
 		category: String,
 
 		hours: {
