@@ -23,7 +23,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 // SPA fallback: serve index.html for any unknown route (after API routes)
-app.get('/*', (req, res) => {
+app.get('/:path*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
