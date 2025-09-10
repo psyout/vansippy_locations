@@ -17,14 +17,14 @@ app.use(express.json());
 // API routes
 app.use('/api/locations', locationRoutes);
 
-// Serve static files from React build
+// Static files
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-// SPA fallback: serve index.html for any unknown route (after API routes)
-app.get('/:path*', (req, res) => {
-	res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+// Catch-all route for React Router (must be last)
+app.get('*', (req, res) => {
+	res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 app.listen(PORT, () => {
