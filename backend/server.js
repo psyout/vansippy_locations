@@ -16,11 +16,6 @@ app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-//
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 // Route to connect endpoints
 app.use('/api/locations', locationRoutes);
 
