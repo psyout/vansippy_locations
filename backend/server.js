@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import locationRoutes from './routes/location.route.js';
 import cors from 'cors';
-import path from 'path';
 
 dotenv.config();
 
@@ -16,11 +15,6 @@ app.use(cors());
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-
-// After all API routes and static middleware
-app.get('*', (req, res) => {
-	res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
 
 // Route to connect endpoints
 app.use('/api/locations', locationRoutes);
