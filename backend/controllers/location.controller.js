@@ -49,18 +49,24 @@ export const addLocation = async (req, res) => {
 export const updateLocation = async (req, res) => {
 	const { id } = req.params;
 
-	const location = req.body;
-
 	if (!mongoose.Types.ObjectId.isValid(id)) {
 		return res.status(404).json({ success: false, message: 'Invalid ID format' });
 	}
 
 	try {
-		await Location.findByIdAndUpdate(id, location, { new: true });
-		res.status(200).json({ success: true, data: location });
+		const updatedLocation = await Location.findByIdAndUpdate(id, req.body, {
+			new: true, // return updated document
+			runValidators: true, // enforce schema validation on update
+		});
+
+		if (!updatedLocation) {
+			return res.status(404).json({ success: false, message: 'Location not found' });
+		}
+
+		res.status(200).json({ success: true, data: updatedLocation });
 	} catch (error) {
-		res.status(500).json({ success: false, message: 'Server error' });
 		console.error('Error updating location:', error.message);
+		res.status(500).json({ success: false, message: 'Server error' });
 	}
 };
 
