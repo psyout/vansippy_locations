@@ -13,7 +13,7 @@ const app = express();
 // Define the port using an environment variable or default to 8080
 const PORT = process.env.PORT || 8080;
 
-const corsOrigins = (process.env.CORS_ORIGIN || 'http://localhost:3000,http://localhost:3001')
+const corsOrigins = (process.env.CORS_ORIGIN || 'https://vansippy.com,https://www.vansippy.com,http://localhost:3000,http://localhost:3001')
 	.split(',')
 	.map((origin) => origin.trim())
 	.filter(Boolean);
